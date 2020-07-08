@@ -1,0 +1,185 @@
+﻿@model Selling_Phone.ViewModels.HomeCreateViewModel
+
+@{
+    ViewBag.Title = "Create Product";
+    var categories = ViewBag.Categories as List<Category>;
+}
+
+<div class="container">
+    <form enctype="multipart/form-data" asp-controller="Home" asp-action="Create" method="post" class="mt-3">
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label asp-for="Name"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label asp-for="Processor"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="Processor" class="form-control" />
+                <span asp-validation-for="Processor" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label asp-for="Screen"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="Screen" class="form-control" />
+                <span asp-validation-for="Screen" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label asp-for="OperatingSystem"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="OperatingSystem" class="form-control" />
+                <span asp-validation-for="OperatingSystem" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label asp-for="RearCamera"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="RearCamera" class="form-control" />
+                <span asp-validation-for="RearCamera" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label asp-for="FrontCamera"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="FrontCamera" class="form-control" />
+                <span asp-validation-for="FrontCamera" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label asp-for="Memory"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="Memory" class="form-control" />
+                <span asp-validation-for="Memory" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label asp-for="HardDrive"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="HardDrive" class="form-control" />
+                <span asp-validation-for="HardDrive" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label asp-for="Sim"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="Sim" class="form-control" />
+                <span asp-validation-for="Sim" class="text-danger"></span>
+            </div>
+
+        </div>
+
+
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label asp-for="Price"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label asp-for="CategoryId"></label>
+            </div>
+            <div class="col-sm-10">
+                <select asp-for="CategoryId" class="custom-select" >
+                    <option value="">Select a Category</option>
+               @if (categories != null)
+               {
+                   foreach(var cat in categories)
+                   {
+                       <option value="@cat.CategoryId" >@cat.CategoryName</option>
+                   }
+               }
+                    </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label asp-for="BatteryCapacity"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="BatteryCapacity" class="form-control" />
+                <span asp-validation-for="BatteryCapacity" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label asp-for="ProductDescription"></label>
+            </div>
+            <div class="col-sm-10">
+                <textarea asp-for="ProductDescription" class="form-control"rows="20" cols="70" ></textarea>
+                <span asp-validation-for="ProductDescription" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label asp-for="Avatar"></label>
+            </div>
+            <div class="col-sm-10 ">
+                <div class="custom-file">
+                    <input class="custom-file-input" asp-for="Avatar">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-warning">Back</a>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $(".custom-file-input").on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+        });
+
+    </script>
+
+}

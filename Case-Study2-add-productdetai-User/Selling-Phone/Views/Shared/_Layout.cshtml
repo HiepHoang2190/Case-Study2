@@ -1,0 +1,277 @@
+﻿@inject SignInManager<ApplicationUser> signInManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/assets/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/assets/css/flaticon.css" rel="stylesheet" />
+    <link href="~/assets/css/slicknav.css" rel="stylesheet" />
+    <link href="~/assets/css/animate.min.css" rel="stylesheet" />
+    <link href="~/assets/css/magnific-popup.css" rel="stylesheet" />
+    <link href="~/assets/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link href="~/assets/css/themify-icons.css" rel="stylesheet" />
+    <link href="~/assets/css/slick.css" rel="stylesheet" />
+    <link href="~/assets/css/nice-select.css" rel="stylesheet" />
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/public/css/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/public/style2.css" rel="stylesheet" />
+    <link href="~/public/css/import/blog.css" rel="stylesheet" />
+    <link href="~/public/css/import/cart.css" rel="stylesheet" />
+    <link href="~/public/css/import/category_product.css" rel="stylesheet" />
+    <link href="~/public/css/import/checkout.css" rel="stylesheet" />
+    <link href="~/public/css/import/detail_blog.css" rel="stylesheet" />
+    <link href="~/public/css/import/detail_product.css" rel="stylesheet" />
+    <link href="~/public/css/import/fonts.css" rel="stylesheet" />
+    <link href="~/public/css/import/footer.css" rel="stylesheet" />
+    <link href="~/public/css/import/global.css" rel="stylesheet" />
+    <link href="~/public/css/import/header.css" rel="stylesheet" />
+    <link href="~/public/css/import/home.css" rel="stylesheet" />
+    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+
+    <!-- Custom styles for this template-->
+    <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="~/assets/css/style2.css" rel="stylesheet" />
+</head>
+<body>
+    <!--? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="assets/img/logo/logo.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+        <div class="header-area " style=" background-color: #fdcb6e">
+            <div class="main-header header-sticky">
+                <div class="container-fluid">
+                    <div class="menu-wrapper">
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a asp-controller="Home" asp-action="Index" class="fontsize"><i class="fas fa-apple-alt"></i>Ku Sộp Store</a>
+                        </div>
+                        <!-- Main-menu -->
+                        <div class="main-menu d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation">
+                                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                                    <li>
+                                        <a href="shop.html">Shop</a>
+                                        <ul class="submenu">
+                                            <li><a href="login.html">Login</a></li>
+                                            <li><a href="cart.html">Cart</a></li>
+                                            <li><a href="elements.html">Element</a></li>
+                                            <li><a href="confirmation.html">Confirmation</a></li>
+                                            <li><a href="checkout.html">Product Checkout</a></li>
+                                        </ul>
+                                    </li>
+                                    @if (signInManager.IsSignedIn(User))
+                                    {
+                                        @if (User.IsInRole("System Admin")|| User.IsInRole("Admin"))
+                                        {
+                                            <li>
+                                                <a asp-controller="ProductManagement" asp-action="Index">ProductManagement</a>
+                                            </li>
+                                          
+                                        }
+                                       
+
+                                    }
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Header Right -->
+                        <div class="header-right">
+                            <ul>
+                                @if (signInManager.IsSignedIn(User))
+                                {
+                                    <li>
+                                        <form asp-controller="Account" asp-action="Logout" method="post">
+                                            <button type="submit" class="btn btn-link">
+                                                Logout @User.Identity.Name
+                                            </button>
+
+                                        </form>
+                                    </li>
+                                    @if (signInManager.IsSignedIn(User))
+                                    {
+                                        @if (User.IsInRole("System Admin"))
+                                        {
+                                            <li> <a asp-controller="Home" asp-action="Create" style="color:black">Create</a></li>
+                                        } @if (User.IsInRole("Admin"))
+                                        {
+                                            <li> <a asp-controller="Home" asp-action="Create" style="color:black">Create</a></li>
+                                        }
+                                    }
+
+
+
+                                }
+                                else
+                                {
+
+                                    <li> <a asp-controller="Account" asp-action="Login"><span class="flaticon-user"></span></a></li>
+
+                                    <li> <a asp-controller="Account" asp-action="Register" style="color:black" class="ml-1">Register</a></li>
+                                    @*<li><a href="cart.html"><span class="flaticon-shopping-cart"></span></a> </li>*@
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <!-- Footer Start-->
+        <div id="footer-wp" style="background-color:#fdcb6e">
+            <div id="foot-body">
+                <div class="wp-inner clearfix">
+                    <div class="block" id="info-company">
+                        <h3 class="title fontsize"><i class="fas fa-apple-alt"></i>Ku Sộp Store</h3>
+                        <p class="desc">Ku Sộp Store luôn cung cấp luôn là sản phẩm chính hãng có thông tin rõ ràng, chính sách ưu đãi cực lớn cho khách hàng có thẻ thành viên.</p>
+                     
+                    </div>
+                    <div class="block menu-ft" id="info-shop">
+                        <h3 class="title">Thông tin cửa hàng</h3>
+                        <ul class="list-item">
+                            <li>
+                                <p>78 Mai Thúc Loan</p>
+                            </li>
+                            <li>
+                                <p>0987.654.321 - 0989.989.989</p>
+                            </li>
+                            <li>
+                                <p>hoangbachhiep2190@gmail.com</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="block menu-ft policy" id="info-shop">
+                        <h3 class="title">Chính sách mua hàng</h3>
+                        <ul class="list-item">
+                            <li>
+                                <a href="" title="">Quy định - chính sách</a>
+                            </li>
+                            <li>
+                                <a href="" title="">Chính sách bảo hành - đổi trả</a>
+                            </li>
+                            <li>
+                                <a href="" title="">Chính sách hội viện</a>
+                            </li>
+                            <li>
+                                <a href="" title="">Giao hàng - lắp đặt</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="block" id="newfeed">
+                        <h3 class="title">Bảng tin</h3>
+                        <p class="desc">Đăng ký với chung tôi để nhận được thông tin ưu đãi sớm nhất</p>
+                        <div id="form-reg">
+                            <form asp-controller="Account" asp-action="Register"  >
+                                <input type="email" name="email" id="email" placeholder="Nhập email tại đây">
+                                <button type="submit" id="sm-reg">Đăng ký</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="foot-bot" style="background-color:#fdcb6e">
+                <div class="wp-inner">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | <i class="fas fa-apple-alt"></i> Ku Sộp Store <i class="fa fa-heart" aria-hidden="true"></i>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </div>
+   
+        <!-- Footer End-->
+    </footer>
+    <!--? Search model Begin -->
+    <div class="search-model-box">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-btn">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Searching key.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+    <!-- JS here -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="~/assets/js/jquery.slicknav.min.js"></script>
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="~/assets/js/owl.carousel.min.js"></script>
+    <script src="~/assets/js/slick.min.js"></script>
+
+    <!-- One Page, Animated-HeadLin -->
+    <script src="~/assets/js/wow.min.js"></script>
+    <script src="~/assets/js/animated.headline.js"></script>
+    <script src="~/assets/js/jquery.magnific-popup.js"></script>
+
+    <!-- Scrollup, nice-select, sticky -->
+    <script src="~/assets/js/jquery.scrollUp.min.js"></script>
+    <script src="~/assets/js/jquery.nice-select.min.js"></script>
+    <script src="~/assets/js/jquery.sticky.js"></script>
+
+    <!-- contact js -->
+    <script src="~/assets/js/contact.js"></script>
+    <script src="~/assets/js/jquery.form.js"></script>
+    <script src="~/assets/js/jquery.validate.min.js"></script>
+    <script src="~/assets/js/mail-script.js"></script>
+    <script src="~/assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/js/demo/chart-area-demo.js"></script>
+    <script src="~/js/demo/chart-pie-demo.js"></script>
+
+    <!-- Jquery Plugins, main Jquery -->
+    <script src="~/assets/js/plugins.js"></script>
+    <script src="~/assets/js/main.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

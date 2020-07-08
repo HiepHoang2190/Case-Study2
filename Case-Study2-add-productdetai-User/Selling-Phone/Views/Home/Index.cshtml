@@ -1,0 +1,122 @@
+﻿@model Selling_Phone.ViewModels.Home.ViewHomeModel
+@*@model IEnumerable<Product>*@
+@{
+    ViewBag.Title = "List Product";
+    var categories = ViewBag.Categories as List<Category>;
+}
+@inject SignInManager<ApplicationUser> signInManager
+<!--? slider Area Start -->
+
+
+
+<div style=" padding-top: 25px; padding-bottom: 75px;margin-left: 2%;margin-right: 2%;">
+
+    <div class="row">
+        <div class="col-lg-3">
+            <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search "
+                  enctype="multipart/form-data"
+                  asp-controller="Home" asp-action="Search" asp-route-id="@Model.key" method="post">
+                <div class="input-group">
+                    <input type="text" asp-for="key" id="key" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fa fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="section mt-3" id="category-product-wp">
+                <div class="section-head">
+                    <h3 class="section-title">Category product</h3>
+                </div>
+                <div class="secion-detail">
+                    <ul class="list-item">
+                        @if (categories != null)
+                        {
+                            foreach (var cat in categories)
+                            {
+                                <li>
+                                    <a asp-controller="Home" asp-action="Product" asp-route-id="@cat.CategoryId">@cat.CategoryName</a>
+                                </li>
+                            }
+                        }
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-9">
+            <div class="row">
+                <div class="slider-area ">
+                    <div class="slider-active">
+                        <!-- Single Slider -->
+                        <div class="single-slider slider-height d-flex align-items-center slide-bg">
+                            <div class="container">
+                                <div class="row justify-content-between align-items-center">
+                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                        <div class="hero__caption">
+                                            <h1 data-animation="fadeInLeft" data-delay=".4s" data-duration="2000ms">Select Your New Phone</h1>
+                                            <p data-animation="fadeInLeft" data-delay=".7s" data-duration="2000ms">Figure out which features you need</p>
+                                            <!-- Hero-btn -->
+                                            <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s" data-duration="2000ms">
+                                                <a href="industries.html" class="btn hero-btn">Shop Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
+                                        <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
+
+                                            <img src="~/images/1e35a37c-0965-4557-b53e-cc61c84361d6_iphone-11-pro.png" alt="" class=" heartbeat ">
+                                            <br />
+                                            <img src="~/images/63572ca7-5de3-41e1-a518-348e2d909755_iphone-11-pro-max.png" alt="" class=" heartbeat ">
+                                            <br />
+                                            <img src="~/images/f785c9d8-7816-4da0-81ec-81ae66d0d6ed_note-10-p.png" alt="" class=" heartbeat ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            @foreach (var emp in Model.Products)
+                            {
+                                var avartarPath = $"/images/{emp.AvatarPatch ?? "img_avatar1.png"}";
+                                <div class="col-6 col-md-3 my-3">
+                                    <div class="card" style="height:400px;">
+
+                                        <div class="card-header">
+                                            <img src="@avartarPath" class="card-img-top" asp-append-version="true" />
+                                            <h5 style="margin-top:.5rem;">Name: @emp.Name</h5>
+                                        </div>
+                                        <div class=" card-body">
+                                            <h5>Price: @emp.Price đồng</h5>
+
+
+                                        </div>
+
+                                        <div class="card-footer text-center">
+                                            <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class="text-success"><i class="fas fa-eye"></i></a>
+                                            @if (signInManager.IsSignedIn(User))
+                                            {
+
+                                                if (User.IsInRole("System Admin") || User.IsInRole("Admin"))
+                                                {
+                                                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@emp.ProductId" class="text-warning"><i class="far fa-edit"></i></a>
+                                                    <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class=" text-danger"><i class="fas fa-trash-alt"></i></a>
+                                                }
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

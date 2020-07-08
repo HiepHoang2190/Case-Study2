@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Product>
+@inject ICategoryRepository categoryRepository
+@{
+    ViewBag.Title = "List Product";
+    var categories = ViewBag.Categories as List<Category>;
+    var categoryName = categoryRepository.Gets();
+}
+@inject SignInManager<ApplicationUser> signInManager
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h3>
+                @ViewBag.Title
+            </h3>
+            <a asp-controller="ProductManagement" asp-action="Create" class="btn btn-warning" style="width:auto">Create Product</a>
+        </div>
+        <div class="card-body">                     
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-bordered table-hover mt-2 mb-4 " id="dataTable" width="100%" cellspacing="0">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Product Name</th>
+                                    <th>Price</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null && Model.Any())
+                                {
+                                    foreach (var pro in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @pro.ProductId
+                                            </td>
+                                            <td>
+                                                @pro.Name
+                                            </td>
+                                            <td>
+                                                @pro.Price đồng
+                                            </td>
+
+                                            <td>
+                                                <a asp-controller="ProductManagement" asp-action="Details" asp-route-id="@pro.ProductId" class="text-success"><i class="fas fa-info-circle"></i></a>
+                                                <a asp-controller="ProductManagement" asp-action="Edit" asp-route-id="@pro.ProductId" class="text-warning"><i class="far fa-edit"></i></a>
+                                                <a asp-controller="ProductManagement" asp-action="Details" asp-route-id="@pro.ProductId" class="text-danger"><i class="fas fa-trash-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+</div>

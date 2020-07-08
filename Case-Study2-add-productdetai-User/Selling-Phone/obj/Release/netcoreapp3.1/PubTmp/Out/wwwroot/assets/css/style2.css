@@ -1,0 +1,15 @@
+.sidebar{
+    min-height:85rem;
+}
+.height85{
+    min-height:85rem;
+}
+.fontsize{
+    font-size:40px;
+}
+#foot-bot {
+    background: #fdcb6e;
+    text-align: center;
+    padding: 10px 0px;
+    color: black
+}

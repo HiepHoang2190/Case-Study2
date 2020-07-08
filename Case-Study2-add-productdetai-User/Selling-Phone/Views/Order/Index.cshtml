@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "List Order";
+}
+
+
+<div class="container mt-4 clearfix">
+
+    <h3>
+        @ViewBag.Title
+    </h3>   
+        <table class="table table-bordered table-hover mt-2">
+            <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>
+                        First and last name
+                    </th>
+                    <th>
+                        Product Count
+                    </th>
+                    <th>
+                        Total price
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Time
+                    </th>
+                    <th>
+                        Detail
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>
+                                @user.UserId
+                            </td>
+                            <td>
+                                @user.Email
+                            </td>
+                            <td>
+                                @user.City
+                            </td>
+                            <td>
+                                @user.Address
+                            </td>
+                            <td>
+                                @user.Gender
+                            </td>
+                            <td>
+                                @user.RolesName
+                            </td>
+                            <td>
+                                <a asp-controller="Order" asp-action="Detail" asp-route-id="@user.UserId" class="btn btn-warning">Detail</a>
+
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+
+        </table>
+    
+</div>
+
+
+

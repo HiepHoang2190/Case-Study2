@@ -1,0 +1,106 @@
+﻿@inject ICategoryRepository categoryRepository
+@model Product
+@{
+    var avartarPath = $"/images/{Model.AvatarPatch ?? "img_avatar1.png"}";
+    var categories = ViewBag.Categories as List<Category>;
+    var categoryName = categoryRepository.Get(Model.CategoryId).CategoryName;
+}
+@inject SignInManager<ApplicationUser> signInManager
+@*<div class="row justify-content-center">
+
+        <div class="col-12 col-sm-4 ">
+            <div class="card my-4">
+                <div class="card-header">
+                    <h3>Name: @Model.product.Name</h3>
+                </div>
+
+                <img src="@avartarPath" class="card-img-top" asp-append-version="true" />
+                <div class="card-body text-center">
+
+                    <h3>Pric:@Model.product.Price</h3>
+                    <h3>Manufactory:@Model.product.Manufactory</h3>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-warning btn1 my-1">Back</a>
+                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@Model.product.ProductId" class="btn btn-primary btn1 my-1">Edit</a>
+                    <a asp-controller="Home" asp-action="Delete" asp-route-id="@Model.product.ProductId" class=" btn btn-danger btn1 my-1">Delete</a>
+                </div>
+            </div>
+        </div>
+
+    </div>*@
+
+
+<div id="main-content-wp" class="clearfix detail-product-page">
+    <div class="wp-inner">
+      
+        <div class="main-content ">
+            <div class="section" id="detail-product-wp">
+                <div class="section-detail clearfix">
+                    <div class="thumb-wp fl-left">
+                        <a href="" title="" id="main-thumb">
+                            <img id="zoom" src="@avartarPath" class="card-img-top" asp-append-version="true" data-zoom-image="@avartarPath" />
+                        </a>
+
+                    </div>
+                    <div class="thumb-respon-wp fl-left">
+                        <img src="@avartarPath" class="card-img-top" asp-append-version="true">
+                    </div>
+                    <div class="info fl-right">
+                        <h3 class="product-name"> @Model.Name</h3>
+                        <div class="desc">
+                            <p>Bộ vi xử lý :@Model.Processor</p>
+                            <p>Màn hình:@Model.Screen</p>
+                            <p>Hệ điều hành:@Model.OperatingSystem</p>
+                            <p>Camera sau:@Model.RearCamera</p>
+                            <p>Camera trước:@Model.FrontCamera</p>
+                            <p>Bộ nhớ RAM :@Model.Memory</p>
+                            <p>Bộ nhớ trong:@Model.HardDrive</p>
+                            <p>Thẻ Sim:@Model.Sim</p>
+                            <p>Dung lượng pin:@Model.BatteryCapacity</p>
+                            <p>Xuất xứ:@categoryName</p>
+                        </div>
+                        <div class="num-product">
+                            <span class="title">Sản phẩm: </span>
+                            <span class="status">Còn hàng</span>
+                        </div>
+                        <p class="price">@Model.Price đ</p>
+                        <div id="num-order-wp">
+                            <a title="" id="minus"><i class="fa fa-minus"></i></a>
+                            <input type="text" name="num-order" value="1" id="num-order">
+                            <a title="" id="plus"><i class="fa fa-plus"></i></a>
+                        </div>
+                     
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            if (User.IsInRole("System Admin"))
+                            {
+                                <a asp-controller="ProductManagement" asp-action="Index" class="btn btn-warning btn1 my-1">Back</a>
+                                <a asp-controller="ProductManagement" asp-action="Edit" asp-route-id="@Model.ProductId" class="btn btn-primary btn1 my-1">Edit</a>
+                                <a asp-controller="ProductManagement" asp-action="Delete" asp-route-id="@Model.ProductId" class=" btn btn-danger btn1 my-1">Delete</a>
+                            }
+                            if (User.IsInRole("Admin"))
+                            {
+                                <a asp-controller="ProductManagement" asp-action="Index" class="btn btn-warning btn1 my-1">Back</a>
+                                <a asp-controller="ProductManagement" asp-action="Edit" asp-route-id="@Model.ProductId" class="btn btn-primary btn1 my-1">Edit</a>
+                                <a asp-controller="ProductManagement" asp-action="Delete" asp-route-id="@Model.ProductId" class=" btn btn-danger btn1 my-1">Delete</a>
+                            }
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="section" id="post-product-wp">
+                <div class="section-head">
+                    <h3 class="section-title">Mô tả sản phẩm</h3>
+                </div>
+                <div class="section-detail">
+                    @Model.ProductDescription
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+</div>

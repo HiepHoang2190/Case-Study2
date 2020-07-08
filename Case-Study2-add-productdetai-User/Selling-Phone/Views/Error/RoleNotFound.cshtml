@@ -1,0 +1,17 @@
+﻿@model string
+@{
+    ViewBag.Title = "Role not found";
+}
+
+<div class="alert alert-danger">
+    <h1>
+        Error 404
+    </h1>
+    <hr />
+    @*<h5> Employee with id=@ViewBag.Id.ToString() can not be found</h5>*@
+    <h5> Role with id=@Model can not be found</h5>
+</div>
+
+<a asp-controller="Role" asp-action="Index" class="btn btn-outline-warning mb-3">
+    Click here to see all employee
+</a>

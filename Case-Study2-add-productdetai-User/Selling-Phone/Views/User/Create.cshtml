@@ -1,0 +1,133 @@
+﻿@model Selling_Phone.ViewModels.UserCreateViewModel
+@inject SignInManager<ApplicationUser> signInManager
+@{
+    ViewBag.Title = "Create User";
+    var roles = ViewBag.Roles as IQueryable<IdentityRole>;
+
+}
+<div class="slider-area ">
+    <div class="single-slider slider-height2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>Create User</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+
+            <form asp-controller="User" asp-action="Create" method="post" class="mt-3">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label asp-for="Email"></label>
+                    </div>
+                    <div class="col-sm-10">
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label asp-for="Password"></label>
+                    </div>
+                    <div class="col-sm-10">
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label asp-for="ConfirmPassword"></label>
+                    </div>
+                    <div class="col-sm-10">
+                        <input asp-for="ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label asp-for="Gender"></label>
+                    </div>
+                    <div class="col-sm-10">
+                        <input asp-for="Gender" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label asp-for="Address"></label>
+                    </div>
+                    <div class="col-sm-10">
+                        <input asp-for="Address" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label asp-for="City"></label>
+                    </div>
+                    <div class="col-sm-10">
+                        <input asp-for="City" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label asp-for="DOB"></label>
+                    </div>
+                    <div class="col-sm-10">
+                        <input asp-for="DOB" type="date" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label asp-for="RoleId"></label>
+                    </div>
+                    <div class="col-sm-10 ">
+                        <select asp-for="RoleId" class="custom-select">
+                            <option value="">Select a Role</option>
+                            @if (roles != null && roles.Any())
+                            {
+                                if (User.IsInRole("System Admin"))
+                                {
+                                    foreach (var role in roles)
+                                    {
+                                        <option value="@role.Id">@role.Name</option>
+                                    }
+                                }
+                                if (User.IsInRole("Admin"))
+                                {
+                                    foreach (var role in roles)
+                                    {
+                                        if (role.Name != "System Admin")
+                                        {
+                                            <option value="@role.Id">@role.Name</option>
+                                        }
+                                    }
+                                }
+
+                            }
+                        </select>
+                        <span asp-validation-for="RoleId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                        <a asp-controller="User" asp-action="Index" class="btn btn-warning">Back</a>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+ 
+   
+
+
+

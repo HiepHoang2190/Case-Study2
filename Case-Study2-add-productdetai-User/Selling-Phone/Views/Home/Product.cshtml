@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewBag.Title = "List Product";
+    var categories = ViewBag.Categories as List<Category>;
+}
+@inject SignInManager<ApplicationUser> signInManager
+<!--? slider Area Start -->
+
+
+
+<div style=" padding-top: 25px; padding-bottom: 75px;margin-left: 2%;margin-right: 2%;">
+
+    <div class="row">
+        <div class="col-lg-3">
+
+            <div class="section" id="category-product-wp">
+                <div class="section-head">
+                    <h3 class="section-title">Category Product</h3>
+                </div>
+                <div class="secion-detail">
+                    <ul class="list-item">
+                        @if (categories != null)
+                        {
+                            foreach (var cat in categories)
+                            {
+                                <li>
+                                    <a asp-controller="Home" asp-action="Product"  asp-route-id="@cat.CategoryId">@cat.CategoryName</a>
+                                </li>
+                            }
+                        }
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-9">
+            <div class="row">
+               
+                <!-- slider Area End-->
+                @foreach (var emp in Model)
+                {
+                    var avartarPath = $"/images/{emp.AvatarPatch ?? "img_avatar1.png"}";
+                    <div class="col-6 col-md-3 my-3">
+                        <div class="card" style="height:530px;">
+
+                            <div class="card-header">
+                                <img src="@avartarPath" class="card-img-top" asp-append-version="true" />
+                                <h3>Name: @emp.Name</h3>
+                            </div>
+                            <div class=" card-body">
+                                <h3>Price: @emp.Price</h3>
+
+
+                            </div>
+
+                            <div class="card-footer text-center">
+                                <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class="text-success"><i class="fas fa-eye"></i></a>
+                                @if (signInManager.IsSignedIn(User))
+                                {
+
+                                    if (User.IsInRole("System Admin") || User.IsInRole("Admin"))
+                                    {
+                                        <a asp-controller="Home" asp-action="Edit" asp-route-id="@emp.ProductId" class="text-warning"><i class="far fa-edit"></i></a>
+                                        <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class="text-danger"><i class="fas fa-trash-alt"></i></a>
+                                    }
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

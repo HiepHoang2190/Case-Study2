@@ -1,0 +1,29 @@
+﻿@model Selling_Phone.ViewModels.Category.CreateCategoryViewModel
+@{
+    ViewBag.Title = "Create Category";
+}
+
+<div class="container mt-4">
+    <h3>Category Management &gt; @ViewBag.Title</h3>
+    <form asp-controller="Category" asp-action="Create" method="post" class="mt-2">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label asp-for="CategoryName"></label>
+            </div>
+            <div class="col-sm-10 ">
+                <input asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a asp-controller="Category" asp-action="Index" class="btn btn-warning">Back</a>
+            </div>
+
+        </div>
+
+    </form>
+</div>
