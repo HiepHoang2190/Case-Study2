@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\codegym\\module3\\Test-case-study\\Case-Study2-add-productdetai-User\\Selling-Phone\\Selling-Phone.csproj": {}
+    "D:\\Case-Study2\\Case-Study2-add-productdetai-User\\Selling-Phone\\Selling-Phone.csproj": {}
   },
   "projects": {
-    "D:\\codegym\\module3\\Test-case-study\\Case-Study2-add-productdetai-User\\Selling-Phone\\Selling-Phone.csproj": {
+    "D:\\Case-Study2\\Case-Study2-add-productdetai-User\\Selling-Phone\\Selling-Phone.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\codegym\\module3\\Test-case-study\\Case-Study2-add-productdetai-User\\Selling-Phone\\Selling-Phone.csproj",
+        "projectUniqueName": "D:\\Case-Study2\\Case-Study2-add-productdetai-User\\Selling-Phone\\Selling-Phone.csproj",
         "projectName": "Selling-Phone",
-        "projectPath": "D:\\codegym\\module3\\Test-case-study\\Case-Study2-add-productdetai-User\\Selling-Phone\\Selling-Phone.csproj",
+        "projectPath": "D:\\Case-Study2\\Case-Study2-add-productdetai-User\\Selling-Phone\\Selling-Phone.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\codegym\\module3\\Test-case-study\\Case-Study2-add-productdetai-User\\Selling-Phone\\obj\\",
+        "outputPath": "D:\\Case-Study2\\Case-Study2-add-productdetai-User\\Selling-Phone\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

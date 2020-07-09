@@ -302,7 +302,7 @@ namespace Selling_Phone.Migrations
                         new
                         {
                             OrderId = 1,
-                            OrderDate = new DateTime(2020, 7, 8, 8, 54, 30, 527, DateTimeKind.Local).AddTicks(184),
+                            OrderDate = new DateTime(2020, 7, 9, 9, 19, 39, 559, DateTimeKind.Local).AddTicks(289),
                             ShipAddress = "28 NTP",
                             ShipName = "Hiệp",
                             Status = 0,
@@ -381,6 +381,9 @@ namespace Selling_Phone.Migrations
                         .HasColumnType("nvarchar(60)")
                         .HasMaxLength(60);
 
+                    b.Property<decimal>("OldPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("OperatingSystem")
                         .HasColumnType("nvarchar(max)");
 
@@ -392,6 +395,9 @@ namespace Selling_Phone.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Promotion")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RearCamera")
@@ -420,6 +426,7 @@ namespace Selling_Phone.Migrations
                             HardDrive = "256 GB",
                             Memory = "4 GB ",
                             Name = "Apple iPhone 11 Pro Max-512GB",
+                            OldPrice = 0m,
                             OperatingSystem = "Ios 13",
                             Price = 36790000m,
                             Processor = "Apple A13 Bionic",
@@ -438,6 +445,7 @@ namespace Selling_Phone.Migrations
                             HardDrive = "256 GB",
                             Memory = "4 GB ",
                             Name = "Apple iPhone 11 Pro-256GB",
+                            OldPrice = 0m,
                             OperatingSystem = "Ios 13",
                             Price = 31290000m,
                             Processor = "Apple A13 Bionic",
@@ -456,6 +464,7 @@ namespace Selling_Phone.Migrations
                             HardDrive = "256 GB",
                             Memory = "12 GB ",
                             Name = "Samsung Galaxy Note 10 Plus",
+                            OldPrice = 0m,
                             OperatingSystem = "Android 10",
                             Price = 18000000m,
                             Processor = "SnapDragon 855",
@@ -474,6 +483,7 @@ namespace Selling_Phone.Migrations
                             HardDrive = "256 GB",
                             Memory = "12 GB ",
                             Name = "Samsung Galaxy S20 Ultra ",
+                            OldPrice = 0m,
                             OperatingSystem = "Android 10",
                             Price = 20990000m,
                             Processor = "SnapDragon 865",
@@ -492,6 +502,7 @@ namespace Selling_Phone.Migrations
                             HardDrive = "256 GB",
                             Memory = "4 GB ",
                             Name = "Apple iPhone 11 Pro Max-512GB",
+                            OldPrice = 0m,
                             OperatingSystem = "Ios 13",
                             Price = 36790000m,
                             Processor = "Apple A13 Bionic",
@@ -510,6 +521,7 @@ namespace Selling_Phone.Migrations
                             HardDrive = "256 GB",
                             Memory = "4 GB ",
                             Name = "Apple iPhone 11 Pro-256GB",
+                            OldPrice = 0m,
                             OperatingSystem = "Ios 13",
                             Price = 31290000m,
                             Processor = "Apple A13 Bionic",
@@ -528,6 +540,7 @@ namespace Selling_Phone.Migrations
                             HardDrive = "256 GB",
                             Memory = "12 GB ",
                             Name = "Samsung Galaxy Note 10 Plus",
+                            OldPrice = 0m,
                             OperatingSystem = "Android 10",
                             Price = 18000000m,
                             Processor = "SnapDragon 855",
@@ -546,6 +559,7 @@ namespace Selling_Phone.Migrations
                             HardDrive = "256 GB",
                             Memory = "12 GB ",
                             Name = "Samsung Galaxy S20 Ultra ",
+                            OldPrice = 0m,
                             OperatingSystem = "Android 10",
                             Price = 20990000m,
                             Processor = "SnapDragon 865",

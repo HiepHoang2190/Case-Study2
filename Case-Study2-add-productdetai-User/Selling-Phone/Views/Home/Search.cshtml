@@ -25,9 +25,9 @@
                     </div>
                 </div>
             </form>
-            <div class="section" id="category-product-wp">
+            <div class="section  mt-3" id="category-product-wp">
                 <div class="section-head">
-                    <h3 class="section-title">Danh mục sản phẩm</h3>
+                    <h3 class="section-title">Category Product</h3>
                 </div>
                 <div class="secion-detail">
                     <ul class="list-item">
@@ -96,14 +96,14 @@
                                         </div>
 
                                         <div class="card-footer">
-                                            <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class="btn btn-info btn1 my-1">View</a>
+                                            <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class="text-success"><i class="fas fa-eye"></i></a>
                                             @if (signInManager.IsSignedIn(User))
                                             {
 
                                                 if (User.IsInRole("System Admin") || User.IsInRole("Admin"))
                                                 {
-                                                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@emp.ProductId" class="btn btn-primary btn1 my-1">Edit</a>
-                                                    <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class=" btn btn-danger btn1 my-1">Delete</a>
+                                                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@emp.ProductId" class="text-warning"><i class="far fa-edit"></i></a>
+                                                    <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class="text-danger"><i class="fas fa-trash-alt"></i></a>
                                                 }
                                             }
 

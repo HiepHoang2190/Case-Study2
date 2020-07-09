@@ -930,3 +930,35 @@ END;
 
 GO
 
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200709021940_UpdatePromotionPriceColumn')
+BEGIN
+    ALTER TABLE [Products] ADD [OldPrice] decimal(18,2) NOT NULL DEFAULT 0.0;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200709021940_UpdatePromotionPriceColumn')
+BEGIN
+    ALTER TABLE [Products] ADD [Promotion] nvarchar(max) NULL;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200709021940_UpdatePromotionPriceColumn')
+BEGIN
+    UPDATE [Orders] SET [OrderDate] = '2020-07-09T09:19:39.5590289+07:00'
+    WHERE [OrderId] = 1;
+    SELECT @@ROWCOUNT;
+
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200709021940_UpdatePromotionPriceColumn')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20200709021940_UpdatePromotionPriceColumn', N'3.1.5');
+END;
+
+GO
+

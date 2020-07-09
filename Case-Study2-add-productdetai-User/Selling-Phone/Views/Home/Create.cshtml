@@ -111,19 +111,29 @@
         </div>
         <div class="row form-group">
             <div class="col-sm-2">
+                <label asp-for="OldPrice"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="OldPrice" class="form-control" />
+                <span asp-validation-for="OldPrice" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
                 <label asp-for="CategoryId"></label>
             </div>
             <div class="col-sm-10">
-                <select asp-for="CategoryId" class="custom-select" >
+                <select asp-for="CategoryId" class="custom-select">
                     <option value="">Select a Category</option>
-               @if (categories != null)
-               {
-                   foreach(var cat in categories)
-                   {
-                       <option value="@cat.CategoryId" >@cat.CategoryName</option>
-                   }
-               }
-                    </select>
+                    @if (categories != null)
+                    {
+                        foreach (var cat in categories)
+                        {
+                            <option value="@cat.CategoryId">@cat.CategoryName</option>
+                        }
+                    }
+                </select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
 
@@ -141,10 +151,20 @@
         </div>
         <div class="row form-group">
             <div class="col-sm-2">
+                <label asp-for="Promotion"></label>
+            </div>
+            <div class="col-sm-10">
+                <textarea asp-for="Promotion" class="form-control" rows="20" cols="70"></textarea>
+                <span asp-validation-for="Promotion" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
                 <label asp-for="ProductDescription"></label>
             </div>
             <div class="col-sm-10">
-                <textarea asp-for="ProductDescription" class="form-control"rows="20" cols="70" ></textarea>
+                <textarea asp-for="ProductDescription" class="form-control" rows="20" cols="70"></textarea>
                 <span asp-validation-for="ProductDescription" class="text-danger"></span>
             </div>
 

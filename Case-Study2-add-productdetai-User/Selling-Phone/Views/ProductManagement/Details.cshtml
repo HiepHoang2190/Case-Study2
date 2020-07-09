@@ -59,18 +59,22 @@
                             <p>Thẻ Sim:@Model.Sim</p>
                             <p>Dung lượng pin:@Model.BatteryCapacity</p>
                             <p>Xuất xứ:@categoryName</p>
+                            <p>Khuyến mãi:@Model.Promotion</p>
                         </div>
                         <div class="num-product">
                             <span class="title">Sản phẩm: </span>
                             <span class="status">Còn hàng</span>
                         </div>
-                        <p class="price">@Model.Price đ</p>
+                        <p class="price">
+                            <span class="new">@Model.Price đ</span>
+                         
+                        </p>
                         <div id="num-order-wp">
                             <a title="" id="minus"><i class="fa fa-minus"></i></a>
                             <input type="text" name="num-order" value="1" id="num-order">
                             <a title="" id="plus"><i class="fa fa-plus"></i></a>
                         </div>
-                     
+
                         @if (signInManager.IsSignedIn(User))
                         {
                             if (User.IsInRole("System Admin"))

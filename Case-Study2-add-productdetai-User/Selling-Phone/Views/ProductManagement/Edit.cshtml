@@ -113,6 +113,16 @@
         </div>
         <div class="row form-group">
             <div class="col-sm-2">
+                <label asp-for="OldPrice"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="OldPrice" class="form-control" />
+                <span asp-validation-for="OldPrice" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
                 <label asp-for="BatteryCapacity"></label>
             </div>
             <div class="col-sm-10">
@@ -136,7 +146,7 @@
                 <label asp-for="CategoryId"></label>
             </div>
             <div class="col-sm-10">
-                <select asp-for="CategoryId" class="custom-select" >
+                <select asp-for="CategoryId" class="custom-select">
                     <option value="">Select a Category</option>
                     @if (categories != null)
                     {

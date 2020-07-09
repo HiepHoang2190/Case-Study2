@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Product>
+﻿@*@model IEnumerable<Product>*@
+@model Selling_Phone.ViewModels.Home.ViewHomeModel
 @inject ICategoryRepository categoryRepository
 @{
     ViewBag.Title = "List Product";
@@ -14,47 +15,54 @@
             </h3>
             <a asp-controller="ProductManagement" asp-action="Create" class="btn btn-warning" style="width:auto">Create Product</a>
         </div>
-        <div class="card-body">                     
-                <div class="row">
-                    <div class="col-sm-12">
-                        <table class="table table-bordered table-hover mt-2 mb-4 " id="dataTable" width="100%" cellspacing="0">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Product Name</th>
-                                    <th>Price</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (Model != null && Model.Any())
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-bordered table-hover mt-2 mb-4 " id="dataTable" width="100%" cellspacing="0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Id</th>
+                                <th>Product Name</th>
+                                <th>Image</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Products.Any())
+                            {
+                                foreach (var pro in Model.Products)
                                 {
-                                    foreach (var pro in Model)
-                                    {
-                                        <tr>
-                                            <td>
-                                                @pro.ProductId
-                                            </td>
-                                            <td>
-                                                @pro.Name
-                                            </td>
-                                            <td>
-                                                @pro.Price đồng
-                                            </td>
+                                    var avartarPath = $"/images/{pro.AvatarPatch ?? "img_avatar1.png"}";
+                            <tr>
+                                <td>
+                                    @pro.ProductId
+                                </td>
+                                <td>
+                                    @pro.Name
+                                </td>
+                                <td>
+                                    <a asp-controller="ProductManagement" asp-action="Edit" asp-route-id="@pro.ProductId" class="thumb" style="width:147px;height:114px;">
+                                        <img src="@avartarPath" class="card-img-top" asp-append-version="true" style="width:164px;height:127px;" />
+                                    </a>
+                                </td>
+                                <td>
+                                    @String.Format("{0:#,##0}", pro.Price) đồng
+                                </td>
 
-                                            <td>
-                                                <a asp-controller="ProductManagement" asp-action="Details" asp-route-id="@pro.ProductId" class="text-success"><i class="fas fa-info-circle"></i></a>
-                                                <a asp-controller="ProductManagement" asp-action="Edit" asp-route-id="@pro.ProductId" class="text-warning"><i class="far fa-edit"></i></a>
-                                                <a asp-controller="ProductManagement" asp-action="Details" asp-route-id="@pro.ProductId" class="text-danger"><i class="fas fa-trash-alt"></i></a>
-                                            </td>
-                                        </tr>
-                                    }
+                                <td>
+                                    <a asp-controller="ProductManagement" asp-action="Details" asp-route-id="@pro.ProductId" class="text-success"><i class="fas fa-info-circle"></i></a>
+                                    <a asp-controller="ProductManagement" asp-action="Edit" asp-route-id="@pro.ProductId" class="text-warning"><i class="far fa-edit"></i></a>
+                                    <a asp-controller="ProductManagement" asp-action="Details" asp-route-id="@pro.ProductId" class="text-danger"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
                                 }
-                            </tbody>
-                        </table>
-                    </div>
+                            }
+                        </tbody>
+                    </table>
                 </div>
-            
             </div>
+
         </div>
+    </div>
 </div>

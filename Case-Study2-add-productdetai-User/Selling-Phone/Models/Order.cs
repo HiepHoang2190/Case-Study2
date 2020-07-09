@@ -16,6 +16,7 @@ namespace Selling_Phone.Models
         public int TotalProduct { get; set; }
         public decimal TotalPrice { get; set; }
         public string ShipPhoneNumber { set; get; }
+    
         public OrderStatus Status { set; get; }
 
         public ICollection<OrderDetail> OrderDetails { get; set; }

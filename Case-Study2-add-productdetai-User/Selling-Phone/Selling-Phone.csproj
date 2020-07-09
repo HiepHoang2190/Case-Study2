@@ -23,6 +23,8 @@
     <Compile Remove="Migrations\20200703071438_CreateOrderDetailTable.Designer.cs" />
     <Compile Remove="Migrations\20200703071725_CreateOrderDetailTable.cs" />
     <Compile Remove="Migrations\20200703071725_CreateOrderDetailTable.Designer.cs" />
+    <Compile Remove="Migrations\20200709021324_AddPromotionColumn.cs" />
+    <Compile Remove="Migrations\20200709021324_AddPromotionColumn.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

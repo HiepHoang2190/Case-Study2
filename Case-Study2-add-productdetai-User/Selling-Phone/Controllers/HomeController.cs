@@ -20,14 +20,17 @@ namespace Selling_Phone.Controllers
         private readonly IProductRepository productRepository;
         private readonly IWebHostEnvironment webHostEnvironment;
         private readonly ICategoryRepository categoryRepository;
+      
 
         public HomeController(IProductRepository productRepository,
                                 IWebHostEnvironment webHostEnvironment,
-                                ICategoryRepository categoryRepository)
+                                ICategoryRepository categoryRepository
+                               )
         {
             this.productRepository = productRepository;
             this.webHostEnvironment = webHostEnvironment;
             this.categoryRepository = categoryRepository;
+           
         }
         [AllowAnonymous]
         public IActionResult Index()
@@ -78,6 +81,7 @@ namespace Selling_Phone.Controllers
                 {
                     Name = model.Name,
                     Price =model.Price,
+                    OldPrice=model.OldPrice,
                     CategoryId=model.CategoryId,
                     Processor=model.Processor,
                     Screen = model.Screen,
@@ -88,7 +92,8 @@ namespace Selling_Phone.Controllers
                     HardDrive=model.HardDrive,
                     Sim=model.Sim,
                     BatteryCapacity=model.BatteryCapacity,
-                    ProductDescription=model.ProductDescription
+                    ProductDescription=model.ProductDescription,
+                    Promotion=model.Promotion
 
                 };
                 var fileName = string.Empty;
@@ -124,6 +129,7 @@ namespace Selling_Phone.Controllers
                 AvatarPath = product.AvatarPatch,
                 Name = product.Name,
                 Price = product.Price,
+                OldPrice=product.OldPrice,
                 CategoryId=product.CategoryId,
                 Id = product.ProductId,
                 Processor = product.Processor,
@@ -135,7 +141,8 @@ namespace Selling_Phone.Controllers
                 HardDrive = product.HardDrive,
                 Sim = product.Sim,
                 BatteryCapacity = product.BatteryCapacity,
-                ProductDescription = product.ProductDescription
+                ProductDescription = product.ProductDescription,
+                Promotion=product.Promotion
             };
             return View(proEdit);
         }
@@ -148,6 +155,7 @@ namespace Selling_Phone.Controllers
                 {
                     Name = model.Name,
                     Price =model.Price,
+                    OldPrice=model.OldPrice,
                     CategoryId=model.CategoryId,           
                      ProductId=model.Id,
                      AvatarPatch=model.AvatarPath,
@@ -160,7 +168,8 @@ namespace Selling_Phone.Controllers
                     HardDrive = model.HardDrive,
                     Sim = model.Sim,
                     BatteryCapacity = model.BatteryCapacity,
-                    ProductDescription = model.ProductDescription
+                    ProductDescription = model.ProductDescription,
+                    Promotion=model.Promotion
                 };
                 var fileName = string.Empty;
                 if (model.Avatar != null)
@@ -206,6 +215,7 @@ namespace Selling_Phone.Controllers
         {
             return categoryRepository.Gets().ToList();
         }
+      
         [AllowAnonymous]
         public IActionResult Product(int id)
         {
@@ -235,6 +245,7 @@ namespace Selling_Phone.Controllers
 
         }
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Search(string key)
         {
             key = key.ToLower();

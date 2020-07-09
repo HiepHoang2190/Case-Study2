@@ -16,6 +16,7 @@ namespace Selling_Phone.ViewModels
 
         [Required]
         public decimal Price { get; set; }
+        public decimal OldPrice { get; set; }
         public string AvatarPatch { get; set; }
         [Required]
         public int CategoryId { get; set; }
@@ -31,5 +32,6 @@ namespace Selling_Phone.ViewModels
         public string Sim { get; set; }
         public string BatteryCapacity { get; set; }
         public string ProductDescription { get; set; }
+        public string Promotion { get; set; }
     }
 }

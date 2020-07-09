@@ -29,6 +29,8 @@ namespace Selling_Phone.Models
         public string Sim { get; set; }
         public string BatteryCapacity { get; set; }
         public string ProductDescription { get; set; }
+        public string Promotion { get; set; }
+        public decimal OldPrice { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; set; }

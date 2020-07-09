@@ -46,15 +46,17 @@
             </div>
 
         </div>
-        <div class="col-lg-9">
+        <div class="col-lg-9" >
             <div class="row">
                 <div class="slider-area ">
                     <div class="slider-active">
                         <!-- Single Slider -->
-                        <div class="single-slider slider-height d-flex align-items-center slide-bg">
+                        <div class="single-slider slider-height d-flex align-items-center slide-bg" 
+                              style="background-image: url('/images/wallpaper-190007.jpg')!important; 
+                                        background-attachment:fixed; background-size:cover;">
                             <div class="container">
-                                <div class="row justify-content-between align-items-center">
-                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <div class="row justify-content-between align-items-center" >
+                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8"  >
                                         <div class="hero__caption">
                                             <h1 data-animation="fadeInLeft" data-delay=".4s" data-duration="2000ms">Select Your New Phone</h1>
                                             <p data-animation="fadeInLeft" data-delay=".7s" data-duration="2000ms">Figure out which features you need</p>
@@ -78,40 +80,218 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            @foreach (var emp in Model.Products)
-                            {
-                                var avartarPath = $"/images/{emp.AvatarPatch ?? "img_avatar1.png"}";
-                                <div class="col-6 col-md-3 my-3">
-                                    <div class="card" style="height:400px;">
+                        @*<div class="row">
+            @foreach (var emp in Model.Products)
+            {
+                var avartarPath = $"/images/{emp.AvatarPatch ?? "img_avatar1.png"}";
+                <div class="col-6 col-md-3 my-3">
+                    <div class="card" style="height:400px;">
 
-                                        <div class="card-header">
-                                            <img src="@avartarPath" class="card-img-top" asp-append-version="true" />
-                                            <h5 style="margin-top:.5rem;">Name: @emp.Name</h5>
-                                        </div>
-                                        <div class=" card-body">
-                                            <h5>Price: @emp.Price đồng</h5>
-
-
-                                        </div>
-
-                                        <div class="card-footer text-center">
-                                            <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class="text-success"><i class="fas fa-eye"></i></a>
-                                            @if (signInManager.IsSignedIn(User))
-                                            {
-
-                                                if (User.IsInRole("System Admin") || User.IsInRole("Admin"))
-                                                {
-                                                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@emp.ProductId" class="text-warning"><i class="far fa-edit"></i></a>
-                                                    <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class=" text-danger"><i class="fas fa-trash-alt"></i></a>
-                                                }
-                                            }
-
-                                        </div>
-                                    </div>
-                                </div>
-                            }
+                        <div class="card-header">
+                            <img src="@avartarPath" class="card-img-top" asp-append-version="true" />
+                            <h5 style="margin-top:.5rem;">Name: @emp.Name</h5>
                         </div>
+                        <div class=" card-body">
+                            <h5>Price: @emp.Price đồng</h5>
+
+
+                        </div>
+
+                        <div class="card-footer text-center">
+                            <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class="text-success"><i class="fas fa-eye"></i></a>
+                            @if (signInManager.IsSignedIn(User))
+                            {
+
+                                if (User.IsInRole("System Admin") || User.IsInRole("Admin"))
+                                {
+                                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@emp.ProductId" class="text-warning"><i class="far fa-edit"></i></a>
+                                    <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class=" text-danger"><i class="fas fa-trash-alt"></i></a>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>*@
+
+                        <div class="section" id="support-wp" >
+                            <div class="section-detail"style="background-color:#ffeaa7">
+                                <ul class="list-item clearfix" >
+                                    <li>
+                                        <div class="thumb">
+                                            <img src="public/images/icon-1.png">
+                                        </div>
+                                        <h3 class="title">Miễn phí vận chuyển</h3>
+                                        <p class="desc">Tới tận tay khách hàng</p>
+                                    </li>
+                                    <li>
+                                        <div class="thumb">
+                                            <img src="public/images/icon-2.png">
+                                        </div>
+                                        <h3 class="title">Tư vấn 24/7</h3>
+                                        <p class="desc">1900.9999</p>
+                                    </li>
+                                    <li>
+                                        <div class="thumb">
+                                            <img src="public/images/icon-3.png">
+                                        </div>
+                                        <h3 class="title">Tiết kiệm hơn</h3>
+                                        <p class="desc">Với nhiều ưu đãi cực lớn</p>
+                                    </li>
+                                    <li>
+                                        <div class="thumb">
+                                            <img src="public/images/icon-4.png">
+                                        </div>
+                                        <h3 class="title">Thanh toán nhanh</h3>
+                                        <p class="desc">Hỗ trợ nhiều hình thức</p>
+                                    </li>
+                                    <li>
+                                        <div class="thumb">
+                                            <img src="public/images/icon-5.png">
+                                        </div>
+                                        <h3 class="title">Đặt hàng online</h3>
+                                        <p class="desc">Thao tác đơn giản</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="section" id="list-product-wp">
+
+                            <div class="section-head">
+                                <h3 class="section-title">Apple</h3>
+                            </div>
+                            <div class="section-detail">
+                                <ul class="list-item clearfix">
+                                    @foreach (var emp in Model.Products)
+                                    {
+                                        if (emp.CategoryId == 1)
+                                        {
+                                            var avartarPath = $"/images/{emp.AvatarPatch ?? "img_avatar1.png"}";
+                                            <li style="height:400px;">
+                                                <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class="thumb" style="width:147px;height:114px;">
+                                                    <img src="@avartarPath" class="card-img-top" asp-append-version="true" />
+                                                </a>
+                                                <a class="product-name"> @emp.Name</a>
+                                                <div class="price">
+                                                    <span class="new">@String.Format("{0:#,##0}", emp.Price) đ</span>
+                                                    <span class="old">@String.Format("{0:#,##0}", emp.OldPrice) đ</span>
+                                                </div>
+                                                <div class="action clearfix">
+                                                    <p>@emp.Promotion</p>
+                                                </div>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+
+
+                            <div class="section-head">
+                                <h3 class="section-title">SamSung</h3>
+                            </div>
+                            <div class="section-detail">
+                                <ul class="list-item clearfix">
+                                    @foreach (var emp in Model.Products)
+                                    {
+                                        if (emp.CategoryId == 2)
+                                        {
+                                            var avartarPath = $"/images/{emp.AvatarPatch ?? "img_avatar1.png"}";
+                                            <li style="height:400px;">
+                                                <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class="thumb" style="width:147px;height:114px;">
+                                                    <img src="@avartarPath" class="card-img-top" asp-append-version="true" />
+                                                </a>
+                                                <a class="product-name"> @emp.Name</a>
+                                                <div class="price">
+                                                    <span class="new">@String.Format("{0:#,##0}", emp.Price) đ</span>
+                                                    <span class="old">@String.Format("{0:#,##0}", emp.OldPrice) đ</span>
+
+                                                </div>
+                                                <div class="action clearfix">
+                                                    <p>@emp.Promotion</p>
+                                                </div>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+
+                            <div class="section-head">
+                                <h3 class="section-title">Xiaomi</h3>
+                            </div>
+                            <div class="section-detail">
+                                <ul class="list-item clearfix">
+                                    @foreach (var emp in Model.Products)
+                                    {
+                                        if (emp.CategoryId == 3)
+                                        {
+                                            var avartarPath = $"/images/{emp.AvatarPatch ?? "img_avatar1.png"}";
+                                            <li style="height:400px;">
+                                                <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class="thumb" style="width:147px;height:114px;">
+                                                    <img src="@avartarPath" class="card-img-top" asp-append-version="true" />
+                                                </a>
+                                                <a class="product-name"> @emp.Name</a>
+                                                <div class="price">
+                                                    <span class="new">@String.Format("{0:#,##0}", emp.Price) đ</span>
+                                                    <span class="old">@String.Format("{0:#,##0}", emp.OldPrice) đ</span>
+
+                                                </div>
+                                                <div class="action clearfix">
+                                                    <p>@emp.Promotion</p>
+                                                </div>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+
+                            <div class="section-head">
+                                <h3 class="section-title">Oppo</h3>
+                            </div>
+                            <div class="section-detail">
+                                <ul class="list-item clearfix">
+                                    @foreach (var emp in Model.Products)
+                                    {
+                                        if (emp.CategoryId == 7)
+                                        {
+                                            var avartarPath = $"/images/{emp.AvatarPatch ?? "img_avatar1.png"}";
+                                            <li style="height:400px;">
+                                                <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.ProductId" class="thumb" style="width:147px;height:114px;">
+                                                    <img src="@avartarPath" class="card-img-top" asp-append-version="true" />
+                                                </a>
+                                                <a class="product-name"> @emp.Name</a>
+                                                <div class="price">
+                                                    <span class="new">@String.Format("{0:#,##0}", emp.Price) đ</span>
+                                                    <span class="old">@String.Format("{0:#,##0}", emp.OldPrice) đ</span>
+                                                </div>
+                                                <div class="action clearfix">
+                                                  
+                                                    <p>@emp.Promotion</p>
+                                                </div>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
 
                     </div>
                 </div>

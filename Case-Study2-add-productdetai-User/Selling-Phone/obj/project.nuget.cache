@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Vw6K4H6D0m8cCkSDckAF0e0ysqBHaSYkgpZbg2/O+Gog8KRx8XQLR3iE5kW2oKp9MeWR3aq5maFFmDAAhsjibw==",
+  "dgSpecHash": "TuQ49gxWkTA3vXTEmgQQElAHVXw2lanKy6t2Gx0VSYYSntzL5FrHaYSlf/tN/jFsno82RaK1su5/xHG58OCVDA==",
   "success": true,
-  "projectFilePath": "D:\\codegym\\module3\\Test-case-study\\Case-Study2-add-productdetai-User\\Selling-Phone\\Selling-Phone.csproj",
+  "projectFilePath": "D:\\Case-Study2\\Case-Study2-add-productdetai-User\\Selling-Phone\\Selling-Phone.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.5\\microsoft.aspnetcore.cryptography.internal.3.1.5.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.5\\microsoft.aspnetcore.cryptography.keyderivation.3.1.5.nupkg.sha512",

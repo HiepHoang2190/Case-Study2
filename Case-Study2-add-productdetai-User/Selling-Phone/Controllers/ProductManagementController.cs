@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Selling_Phone.Models;
 using Selling_Phone.ViewModels;
+using Selling_Phone.ViewModels.Home;
 
 namespace Selling_Phone.Controllers
 {
@@ -27,10 +28,17 @@ namespace Selling_Phone.Controllers
         }
         public IActionResult Index()
         {
+            //ViewBag.Categories = GetCategories();
+            //var products = productRepository.Gets();
+            //return View(products);
             ViewBag.Categories = GetCategories();
             var products = productRepository.Gets();
-            return View(products);
-            return View();
+            var model = new ViewHomeModel()
+            {
+                Products = products
+            };
+            return View(model);
+
         }
         public ViewResult Details(int id)
         {
@@ -69,6 +77,7 @@ namespace Selling_Phone.Controllers
                 {
                     Name = model.Name,
                     Price = model.Price,
+                    OldPrice=model.OldPrice,
                     CategoryId = model.CategoryId,
                     Processor = model.Processor,
                     Screen = model.Screen,
@@ -79,7 +88,8 @@ namespace Selling_Phone.Controllers
                     HardDrive = model.HardDrive,
                     Sim = model.Sim,
                     BatteryCapacity = model.BatteryCapacity,
-                    ProductDescription = model.ProductDescription
+                    ProductDescription = model.ProductDescription,
+                    Promotion=model.Promotion
 
                 };
                 var fileName = string.Empty;
@@ -115,6 +125,7 @@ namespace Selling_Phone.Controllers
                 AvatarPath = product.AvatarPatch,
                 Name = product.Name,
                 Price = product.Price,
+                OldPrice=product.OldPrice,
                 CategoryId = product.CategoryId,
                 Id = product.ProductId,
                 Processor = product.Processor,
@@ -126,7 +137,8 @@ namespace Selling_Phone.Controllers
                 HardDrive = product.HardDrive,
                 Sim = product.Sim,
                 BatteryCapacity = product.BatteryCapacity,
-                ProductDescription = product.ProductDescription
+                ProductDescription = product.ProductDescription,
+                Promotion=product.Promotion
             };
             return View(proEdit);
         }
@@ -139,6 +151,7 @@ namespace Selling_Phone.Controllers
                 {
                     Name = model.Name,
                     Price = model.Price,
+                    OldPrice=model.Price,
                     CategoryId = model.CategoryId,
                     ProductId = model.Id,
                     AvatarPatch = model.AvatarPath,
@@ -151,7 +164,8 @@ namespace Selling_Phone.Controllers
                     HardDrive = model.HardDrive,
                     Sim = model.Sim,
                     BatteryCapacity = model.BatteryCapacity,
-                    ProductDescription = model.ProductDescription
+                    ProductDescription = model.ProductDescription,
+                    Promotion=model.Promotion
                 };
                 var fileName = string.Empty;
                 if (model.Avatar != null)
